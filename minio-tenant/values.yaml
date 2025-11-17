@@ -45,12 +45,12 @@ tenant:
             targetPort: http-minio
 
   certificate:
-    requestAutoCert: false
-    externalCertSecret:
-      - name: console-acme-secret
-        type: kubernetes.io/tls
-      - name: min-acme-secret
-        type: kubernetes.io/tls
+    requestAutoCert: true
+#    externalCertSecret:
+#      - name: console-acme-secret
+#        type: kubernetes.io/tls
+#      - name: min-acme-secret
+#        type: kubernetes.io/tls
 
   buckets:
     - name: "files"

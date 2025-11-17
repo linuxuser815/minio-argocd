@@ -119,7 +119,7 @@ tenant:
   startup: { }
   ## exposeServices defines the exposure of the MinIO object storage and Console services.
   ## service is exposed as a loadbalancer in k8s service.
-  exposeServices: { console: true, minio: true }
+  exposeServices: { }
   # kubernetes service account associated with a specific tenant
   # https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
   serviceAccountName: ""
@@ -226,6 +226,16 @@ tenant:
   #    runAsGroup: 1000
   #    runAsNonRoot: true
   #    fsGroup: 1000
+
+  console:
+    service:
+      ports:
+        - name: https-console
+          port: 9443
+          targetPort: https-console
+        - name: http-console
+          port: 9001
+          targetPort: http-console
 
 ingress:
   api:

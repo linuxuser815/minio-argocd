@@ -29,7 +29,7 @@ tenant:
           targetPort: http-console
 
   pools:
-    - servers: 4
+    - servers: 3
       name: pool-0
       volumesPerServer: 4
       size: 10Gi

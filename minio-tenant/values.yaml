@@ -45,10 +45,10 @@ tenant:
             targetPort: http-minio
 
   certificate:
-    requestAutoCert: true
-#    externalCertSecret:
-#      - name: console-acme-secret
-#        type: kubernetes.io/tls
+    requestAutoCert: false
+    externalCertSecret:
+      - name: console-acme-secret
+        type: kubernetes.io/tls
 #      - name: min-acme-secret
 #        type: kubernetes.io/tls
 
@@ -60,6 +60,13 @@ tenant:
     anonymous: true
     json: true
     quiet: true
+
+
+  env:
+    - name: MINIO_SERVER_URL
+      value: "https://minio.test.ubidex.bid"
+    - name: MINIO_BROWSER_REDIRECT_URL
+      value: "https://console.test.ubidex.bid"
 
 #  env:
 #    - name: MINIO_TLS_REDIRECT

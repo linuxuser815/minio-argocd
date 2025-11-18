@@ -25,7 +25,7 @@ tenant:
           port: 9443
           targetPort: https-console
         - name: http-console
-          port: 9001
+          port: 9090
           targetPort: http-console
 
   pools:
@@ -51,14 +51,6 @@ tenant:
 #        type: kubernetes.io/tls
 #      - name: min-acme-secret
 #        type: kubernetes.io/tls
-
-  features:
-    bucketDNS: true
-    # domains: { }
-    domains:
-      console: https://myminio-console.minio-tenant.svc.cluster.local
-#      minio:
-#      - https://minio2-api.<FQDN>
 
   buckets:
     - name: "files"

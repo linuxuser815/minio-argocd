@@ -45,20 +45,12 @@ tenant:
             targetPort: http-minio
 
   certificate:
-    requestAutoCert: false
+    requestAutoCert: true
 #    externalCertSecret:
 #      - name: console-acme-secret
 #        type: kubernetes.io/tls
 #      - name: min-acme-secret
 #        type: kubernetes.io/tls
-
-  features:
-    bucketDNS: true
-    # domains: { }
-    domains:
-      console: https://myminio-console.minio-tenant.svc.cluster.local
-#      minio:
-#      - https://minio2-api.<FQDN>
 
   buckets:
     - name: "files"

@@ -45,7 +45,7 @@ tenant:
             targetPort: http-minio
 
   certificate:
-    requestAutoCert: true
+    requestAutoCert: false
 #    externalCertSecret:
 #      - name: console-acme-secret
 #        type: kubernetes.io/tls

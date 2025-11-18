@@ -66,7 +66,7 @@ tenant:
 #    name: minio-console-url
 
   env:
-№    - name: MINIO_TLS_REDIRECT
+#    - name: MINIO_TLS_REDIRECT
 #      value: "off"
     - name: MINIO_BROWSER_REDIRECT_URL
       value: "https://console.test.ubidex.bid"

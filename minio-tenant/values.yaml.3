@@ -1,0 +1,81 @@
+secrets:
+  name: myminio-env-configuration
+  accessKey: minio
+  secretKey: minio123
+
+tenant:
+  name: myminio
+  image:
+    repository: quay.io/minio/minio
+#    tag: RELEASE.2023-03-24T21-41-23Z
+    tag: RELEASE.2025-04-08T15-41-24Z
+    pullPolicy: IfNotPresent
+
+  configuration:
+    name: myminio-env-configuration
+
+  exposeServices:
+    console: true
+    minio: true
+
+  console:
+    service:
+      type: ClusterIP
+      ports:
+        - name: https-console
+          port: 9443
+#          targetPort: https-console
+        - name: http-console
+          port: 9090
+#          targetPort: http-console
+
+  pools:
+    - servers: 3
+      name: pool-0
+      volumesPerServer: 4
+      size: 10Gi
+      storageClassName: standard
+      service:
+        type: ClusterIP
+        ports:
+          - name: https-minio
+            port: 443
+            targetPort: https-minio
+          - name: http-minio
+            port: 9000
+            targetPort: http-minio
+
+  certificate:
+    requestAutoCert: true
+#    externalCertSecret:
+#      - name: console-acme-secret
+#        type: kubernetes.io/tls
+#      - name: min-acme-secret
+#        type: kubernetes.io/tls
+
+  buckets:
+    - name: "files"
+
+  podManagementPolicy: Parallel
+  logging:
+    anonymous: true
+    json: true
+    quiet: true
+
+#spec:
+#  configuration:
+#    name: minio-console-url
+
+#  env:
+#    - name: MINIO_TLS_REDIRECT
+#      value: "off"
+#    - name: MINIO_BROWSER_REDIRECT_URL
+#      value: "https://console.test.ubidex.bid"
+#    - name: MINIO_SERVER_URL
+#      value: "https://minio.test.ubidex.bid"
+
+ingress:
+  api:
+    enabled: false
+  console:
+    enabled: false

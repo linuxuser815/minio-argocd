@@ -61,6 +61,9 @@ tenant:
     json: true
     quiet: true
 
+  env:
+    - name: MINIO_BROWSER_REDIRECT_URL
+      value: "https://console.test.ubidex.bid"
 
 #  env:
 #    - name: MINIO_TLS_REDIRECT
